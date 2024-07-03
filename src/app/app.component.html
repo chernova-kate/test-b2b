@@ -1,0 +1,11 @@
+<ng-container *ngrxLet="loadingState$ | async as loadingState">
+
+  <app-header (filtersChanged)="loadData($event)"/>
+
+  <div *ngIf="loadingState === LoadingState.loading" class="overlay">
+    <span class="loader"></span>
+  </div>
+
+  <app-table [data]="(data$ | async) || []"/>
+</ng-container>
+
